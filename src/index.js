@@ -8,7 +8,7 @@ import {store} from "./redux/store"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/React-team-project">
+    <BrowserRouter basename="/NewPost">
       <Provider store={store}>
         {/* <PersistGate loading={null} persistor={persistor}> */}
           <App />

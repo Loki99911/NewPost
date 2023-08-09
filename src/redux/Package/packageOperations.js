@@ -5,7 +5,7 @@ import {
   removeProductAPI,
   changeProductAPI,
   getProductByIdAPI,
-} from "../../service/API/productsApi";
+} from '../../service/API/packageApi';
 
 export const getProducts = createAsyncThunk(
   "products/getProducts",

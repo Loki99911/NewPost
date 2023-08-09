@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
-import productReducer from "./Product/productReducer";
+import productReducer from "./Package/packageReducer";
 
 const productsPersistConfig = {
   key: "products",

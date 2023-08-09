@@ -5,7 +5,7 @@ import {
   removeProduct,
   changeProduct,
   getProductById,
-} from "./productOperations";
+} from "./packageOperations";
 
 const pending = (state) => {
   state.isLoading = true;
