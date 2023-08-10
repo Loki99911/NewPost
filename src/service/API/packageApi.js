@@ -1,42 +1,42 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL_BACK;
+const apiKey = process.env.REACT_APP_KEY;
 
-export const getProductsAPI = (page, per_page, article, filter) => {
-  if (page && per_page) {
-    return axios
-      .get(
-        `/api/products?page=${page}&per_page=${per_page}&article=${article}&filter=${filter}`
-      )
-      .then(({ data }) => {
-        return data;
-      });
-  }
-  return axios.get('/api/products').then(({ data }) => {
+// export const getProductByIdAPI = id => {
+//   return axios.get(`/api/products/${id}`).then(({ data }) => {
+//     return data;
+//   });
+// };
+
+export const getProductByIdAPI = declarationNumber => {
+  const body = {
+    apiKey,
+    modelName: 'TrackingDocument',
+    calledMethod: 'getStatusDocuments',
+    methodProperties: {
+      Documents: [
+        {
+          DocumentNumber: declarationNumber,
+          Phone: '',
+        },
+      ],
+    },
+  };
+  return axios.post(`/`, body).then(({ data }) => {
     return data;
   });
 };
 
-export const addProductAPI = product => {
-  return axios.post('/api/products/', product).then(({ data }) => {
-    return data;
-  });
-};
-
-export const removeProductAPI = id => {
-  return axios.delete(`/api/products/${id}`).then(({ data }) => {
-    return data;
-  });
-};
-
-export const changeProductAPI = (id, product) => {
-  return axios.put(`/api/products/${id}`, product).then(({ data }) => {
-    return data;
-  });
-};
-
-export const getProductByIdAPI = id => {
-  return axios.get(`/api/products/${id}`).then(({ data }) => {
-    return data;
-  });
-};
+// export const getProductByIdAPI = body => {
+//   try {
+//     const { data, status } = axios.post(`?apiKey=${apiKey}`, body);
+//     if (status !== 200) {
+//       throw new Error(`Failed to fetch data: ${status}`);
+//     }
+//     return data;
+//   } catch (error) {
+//     alert(error.message);
+//     return error;
+//   }
+// };

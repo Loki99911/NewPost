@@ -4,7 +4,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import productReducer from "./Package/packageReducer";
 
 const productsPersistConfig = {
-  key: "products",
+  key: "package",
   storage,
 };
 
@@ -15,9 +15,9 @@ const persistedReducerProducts = persistReducer(
 
 export const store = configureStore({
   reducer: {
-    products: persistedReducerProducts,
+    packages: persistedReducerProducts,
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),

@@ -1,23 +1,15 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect} from 'react';
+import { getProductById } from 'redux/Package/packageOperations';
+import { useDispatch } from 'react-redux';
 
 const MainPage = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  const dispath = useDispatch();
   useEffect(() => {
-    const getEvents = async () => {
-      try {
-        const { data } = await axios.get(
-          'https://64c88fa6a1fe0128fbd5e8b1.mockapi.io/events'
-        );
-        setData(data);
-        // return data;
-      } catch (error) {
-        return;
-      }
-    };
-    getEvents();
+    const data = dispath(getProductById('59001005728749'));
+    console.log(data);
+    // eslint-disable-next-line
   }, []);
-console.log(data);
   return (
     <>
       
