@@ -7,18 +7,12 @@ export const Wrapper = styled.div`
 `;
 
 export const Main = styled.main`
-  flex: 1;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding-top: 40px;
-  padding-bottom: 32px;
 
   @media screen and (min-width: 768px) {
-    padding-top: 64px;
-    padding-bottom: 48px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    padding-top: 72px;
-    padding-bottom: 56px;
+    padding-top: 60px;
   }
 `;
