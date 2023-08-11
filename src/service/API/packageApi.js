@@ -22,14 +22,27 @@ export const getProductByIdAPI = declarationNumber => {
   });
 };
 
-export const getAddressAPI = () => {
+export const getAddressAPI = ({ inputValue, selectValue }) => {
   const body = {
     apiKey,
     modelName: 'Address',
     calledMethod: 'getWarehouses',
     methodProperties: {
-      TypeOfWarehouseRef: '6f8c7162-4b72-4b0a-88e5-906948c6a92f',
+      CityName: inputValue,
+      TypeOfWarehouseRef: selectValue,
     },
+  };
+  return axios.post(`/`, body).then(({ data }) => {
+    return data;
+  });
+};
+
+export const getWarehouseTypesAPI = () => {
+  const body = {
+    apiKey,
+    modelName: 'Address',
+    calledMethod: 'getWarehouseTypes',
+    methodProperties: {},
   };
   return axios.post(`/`, body).then(({ data }) => {
     return data;

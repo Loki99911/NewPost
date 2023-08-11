@@ -3,9 +3,9 @@ import { getAddressAPI } from '../../service/API/packageApi';
 
 export const getAddress = createAsyncThunk(
   'address/getAddress',
-  async (_, { rejectWithValue }) => {
+  async (param, { rejectWithValue }) => {
     try {
-      const data = await getAddressAPI();
+      const data = await getAddressAPI(param);
       return data.data;
     } catch (error) {
       return rejectWithValue(error.message);

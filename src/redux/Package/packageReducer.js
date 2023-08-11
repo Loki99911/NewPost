@@ -40,4 +40,4 @@ const productsSlice = createSlice({
 
 export default productsSlice.reducer;
 
-export const { setNewDate, setModalOpen } = productsSlice.actions;
+export const { setNewDate} = productsSlice.actions;

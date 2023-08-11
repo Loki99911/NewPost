@@ -15,6 +15,7 @@ const MainPage = () => {
   const [currentNumber, setCurrentNumber] = useState(lastPackage[0]||'');
   const [inputValue, setInputValue] = useState(lastPackage[0] || '');
   
+  
   useEffect(() => {
     dispath(getProductById(currentNumber));
   }, [dispath, currentNumber]);

@@ -1,18 +1,25 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAddress } from "redux/Address/addressOperations";
-import { getAddresses } from "redux/Address/addressSelectors";
+import { AddressForm } from 'components/AddressForm/AddressForm';
+import { AddressList } from 'components/AddressList/AddressList';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAddresses } from 'redux/Address/addressSelectors';
+import { getWarehouseType } from 'redux/WarehouseType/warehouseTypeOperations';
 
 const AddressPage = () => {
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const addresses = useSelector(getAddresses);
-
+  
   useEffect(() => {
-    dispath(getAddress());
+    dispatch(getWarehouseType());
     // eslint-disable-next-line
-  },[])
-  console.log(addresses);
-  return <></>;
+  }, []);
+
+  return (
+    <>
+      <AddressForm />
+      {addresses && <AddressList addresses={addresses} />}
+    </>
+  );
 };
 
 export default AddressPage;
