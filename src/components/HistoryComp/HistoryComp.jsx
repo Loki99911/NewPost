@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getHistory } from 'redux/History/historySelectors';
 import {
-  HistoryСlearBtn,
   HistoryItem,
   HistoryList,
   HistorySelectBtn,
@@ -9,19 +8,21 @@ import {
   HistoryWrapper,
 } from './HistoryComp.styled';
 import { clearHistory } from 'redux/History/historyReducer';
+import { OrangeButton } from 'components/OrangeButton/OrangeButton';
 
-export const HistoryComp = ({ setCurrentNumber, setInputValue }) => {
-    const historyList = useSelector(getHistory);
-    const dispatch = useDispatch();
-    
-    const setValues = number => {
-      setCurrentNumber(number);
-      setInputValue(number);
-    };
+export const HistoryComp = ({ setCurrentNumber, setInputValue, setInputError }) => {
+  const historyList = useSelector(getHistory);
+  const dispatch = useDispatch();
 
-    const getClearHistory = () => {
-      dispatch(clearHistory());
-    };
+  const setValues = number => {
+    setCurrentNumber(number);
+    setInputValue(number);
+    setInputError("");
+  };
+
+  const getClearHistory = () => {
+    dispatch(clearHistory());
+  };
 
   return (
     <HistoryWrapper>
@@ -35,7 +36,7 @@ export const HistoryComp = ({ setCurrentNumber, setInputValue }) => {
           </HistoryItem>
         ))}
       </HistoryList>
-      <HistoryСlearBtn onClick={getClearHistory}>Сlear</HistoryСlearBtn>
+      <OrangeButton onClick={getClearHistory}>Сlear</OrangeButton>
     </HistoryWrapper>
   );
 };

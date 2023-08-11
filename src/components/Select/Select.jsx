@@ -20,7 +20,6 @@ export const Select = ({ setSelectValue }) => {
       defaultValue={options[0]}
       options={options}
       onChange={e => {
-        console.log(e);
         setSelectValue(e.value);
       }}
     />

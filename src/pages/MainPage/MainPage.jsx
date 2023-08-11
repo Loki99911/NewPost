@@ -14,6 +14,7 @@ const MainPage = () => {
   const yourPackage = useSelector(getPackages);
   const [currentNumber, setCurrentNumber] = useState(lastPackage[0]||'');
   const [inputValue, setInputValue] = useState(lastPackage[0] || '');
+  const [inputError, setInputError] = useState('');
   
   
   useEffect(() => {
@@ -26,6 +27,8 @@ const MainPage = () => {
         inputValue={inputValue}
         setInputValue={setInputValue}
         setCurrentNumber={setCurrentNumber}
+        inputError={inputError}
+        setInputError={setInputError}
       />
       {yourPackage.length !== 0 && (
         <InfoPlate>
@@ -33,6 +36,7 @@ const MainPage = () => {
           <HistoryComp
             setCurrentNumber={setCurrentNumber}
             setInputValue={setInputValue}
+            setInputError={setInputError}
           />
         </InfoPlate>
       )}

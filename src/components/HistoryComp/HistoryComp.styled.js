@@ -40,13 +40,3 @@ export const HistorySelectBtn = styled.button`
   }
 `;
 
-export const HistoryСlearBtn = styled.button`
-  background-color: transparent;
-  border: none;
-  transition: background-color 350ms linear;
-  cursor: pointer;
-  &:hover {
-    background-color: #ff9900;
-    border-radius: 5px;
-  }
-`;

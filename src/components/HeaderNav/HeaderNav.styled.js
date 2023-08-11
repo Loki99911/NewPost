@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-// import letter from "../../images/Letter.gif"
 
 export const Header = styled.header`
   display: flex;
@@ -40,10 +39,13 @@ export const StyledLink = styled(NavLink)`
   min-width: 150px;
   outline: 1px solid #000000;
   border-radius: 5px;
+  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  transition: all 250ms linear;
 
   &:hover,
   &.active {
     background-color: #cccccc;
     outline: 2px solid #ff9900;
+    box-shadow: 2px 4px 9px 0px #ff9900;
   }
 `;

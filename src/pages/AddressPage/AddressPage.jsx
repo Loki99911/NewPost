@@ -17,7 +17,7 @@ const AddressPage = () => {
   return (
     <>
       <AddressForm />
-      {addresses && <AddressList addresses={addresses} />}
+      {addresses.length===0?<h3>Нажаль нічого не знайдено( </h3>: <AddressList addresses={addresses} />}
     </>
   );
 };

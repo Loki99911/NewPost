@@ -1,41 +1,53 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setHistory } from 'redux/History/historyReducer';
 import { getHistory } from 'redux/History/historySelectors';
-// import { getProductById } from 'redux/Package/packageOperations';
+import { PackageErrorText, PackageForm, PackageInput } from './Form.styled';
+import { OrangeButton } from 'components/OrangeButton/OrangeButton';
 
 export const Form = ({
   inputValue,
   setInputValue,
   setCurrentNumber,
+  inputError,
+  setInputError,
 }) => {
   const dispath = useDispatch();
   const historyList = useSelector(getHistory);
-  const [inputError, setInputError] = useState('');
 
   const handleSubmit = e => {
+    e.preventDefault();
     const regex = /^\d{14}$/;
     if (!regex.test(inputValue)) {
-      setInputError('Please enter a 14-digit number');
+      setInputError('Невірно вказан номер TTN!');
       return;
     }
-    e.preventDefault();
     setCurrentNumber(inputValue);
     if (!historyList.includes(inputValue)) {
       dispath(setHistory(inputValue));
     }
   };
 
+  const handleCityInputChange = e => {
+    e.preventDefault();
+    const newInputValue = e.target.value;
+    setInputValue(newInputValue);
+    setInputError('');
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <PackageForm onSubmit={handleSubmit}>
+      <PackageInput
         type="text"
-        onChange={e => setInputValue(e.target.value)}
+        onChange={handleCityInputChange}
         value={inputValue}
-        placeholder="Please set TTN"
+        placeholder="Будь ласка, вкажіть TTN."
       />
-      {inputError && <p style={{ color: 'red' }}>{inputError}</p>}
-      <button>Get status TTN</button>
-    </form>
+      <OrangeButton>Get status TTN</OrangeButton>
+      {inputError && (
+        <PackageErrorText style={{ color: 'red' }}>
+          {inputError}
+        </PackageErrorText>
+      )}
+    </PackageForm>
   );
 };

@@ -7,8 +7,6 @@ export const SelectInput = styled(Select)`
     line-height: 1;
     font-weight: 500;
 
-    width: 69px;
-    height: 48px;
     border-radius: 8px;
     background-color: #ffffff;
     box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);

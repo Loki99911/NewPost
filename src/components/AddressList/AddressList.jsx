@@ -1,10 +1,19 @@
-// import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { setHistory } from 'redux/History/historyReducer';
-// import { getHistory } from 'redux/History/historySelectors';
+import { useSelector } from "react-redux";
+import { AddrItem, AddrList } from "./AddressList.styled";
+import { getLoading } from "redux/Address/addressSelectors";
+import { Loader } from "components/Loader/Loader";
 
-export const AddressList = () => {
-  // const historyList = useSelector(getHistory);
+export const AddressList = ({ addresses }) => {
+  const isLoading = useSelector(getLoading);
 
-  return <></>;
+  return (
+    <>
+      {isLoading?<Loader/>:
+      <AddrList>
+        {addresses.map(addr => (
+          <AddrItem key={addr.SiteKey}>{addr.Description}</AddrItem>
+        ))}
+      </AddrList>}
+    </>
+  );
 };

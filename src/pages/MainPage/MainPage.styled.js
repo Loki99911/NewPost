@@ -9,11 +9,13 @@ export const MainWrapper = styled.div`
 `;
 
 export const InfoPlate = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
   gap: 20px;
   flex-direction: column;
   @media screen and (min-width: 768px) {
-    flex-direction: row;
+    grid-template-columns: 2fr 1fr;
     gap: 30px;
   }
 `;
